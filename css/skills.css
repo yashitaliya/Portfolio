@@ -1,0 +1,429 @@
+/* Skills Section Styles */
+
+.skills {
+    background: var(--bg-secondary);
+    margin: 0;
+    padding: 100px 5%;
+    width: 100%;
+    border-radius: 0;
+    transition: background-color 0.3s ease;
+}
+
+.skills-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+}
+
+.skills-category h3 {
+    font-size: 2rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-primary);
+    margin-bottom: 35px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.skill-item {
+    margin-bottom: 30px;
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.skill-name {
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0;
+}
+
+.skill-percentage {
+    font-size: 14px;
+    color: var(--accent-primary);
+    font-weight: 700;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--bg-tertiary);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border-color);
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    border-radius: 10px;
+    position: relative;
+    transition: width 1s ease-in-out;
+    animation: skillLoad 1.5s ease-in-out;
+}
+
+.skill-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes skillLoad {
+    from {
+        width: 0;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Skills and Certificates Styles */
+.skills-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+.skills-section,
+.certificates-section {
+    text-align: left;
+    padding: 0 20px;
+}
+
+/* Match heading styles between Skills and Certificates */
+.skills-section h3,
+.certificates-section h3 {
+    font-size: 2rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-primary);
+    margin: 0 0 24px 20px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    text-align: left;
+}
+
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.skill-tag {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px rgba(99,102,241,0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-tag:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(99,102,241,0.3);
+}
+
+.skill-tag::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255,255,255,0.1);
+    transform: rotate(45deg);
+    animation: shimmerSkill 3s linear infinite;
+}
+
+@keyframes shimmerSkill {
+    from { transform: translateX(-150%) rotate(45deg); }
+    to { transform: translateX(150%) rotate(45deg); }
+}
+
+.certificates-flow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 12px 0 0 0;
+    margin: 0 20px;
+}
+
+/* Make each card fill its grid cell so rows are consistent */
+.certificates-flow .certificate-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.certificate-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    padding: 18px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    min-height: 200px;
+}
+
+/* Fade edges of certificate container */
+.certificates-flow::after,
+.certificates-flow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 60px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.certificates-flow::before {
+    left: 0;
+    background: linear-gradient(to right, 
+        var(--bg-secondary), 
+        transparent);
+}
+
+.certificates-flow::after {
+    right: 0;
+    background: linear-gradient(to left, 
+        var(--bg-secondary), 
+        transparent);
+}
+
+.certificate-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.certificate-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.certificate-card:hover::before {
+    left: 100%;
+    transition: 0.5s;
+}
+
+.cert-thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    font-size: 24px;
+    color: white;
+    transition: transform 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.certificate-card:hover .cert-thumb {
+    transform: rotate(360deg) scale(1.1);
+}
+
+.cert-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 auto 0;
+    line-height: 1.4;
+    padding: 0 10px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cert-btn {
+    background: transparent;
+    color: var(--accent-primary);
+    padding: 8px 16px;
+    border: 2px solid var(--accent-primary);
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin-top: auto;
+}
+
+.cert-btn:hover {
+    color: white;
+    background: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .skills-tags {
+        gap: 10px;
+    }
+    
+    .skill-tag {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .certificates-flow {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin: 0 15px;
+    }
+    
+    .certificate-card {
+        width: 100%;
+        max-width: none;
+        padding: 15px;
+        min-height: 180px;
+    }
+
+    .cert-thumb {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
+    .cert-title {
+        font-size: 0.9rem;
+        min-height: 40px;
+        padding: 0 5px;
+    }
+
+    .cert-btn {
+        padding: 6px 14px;
+        font-size: 0.85rem;
+        margin-top: 10px;
+    }
+}
+
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .skills {
+        padding: 70px 4%;
+    }
+
+    .skills-wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .skills-category h3 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 640px) {
+    .skills {
+        padding: 60px 4%;
+    }
+
+    .skills-category h3 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .skill-item {
+        margin-bottom: 20px;
+    }
+
+    .skill-name {
+        font-size: 14px;
+    }
+
+    .skill-percentage {
+        font-size: 12px;
+    }
+
+    .certificates-flow {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 0 12px;
+    }
+
+    .certificate-card {
+        padding: 15px;
+        min-height: auto;
+        flex-direction: row;
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .cert-thumb {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+        margin-bottom: 0;
+        margin-right: 12px;
+        flex-shrink: 0;
+    }
+
+    .cert-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        flex: 1;
+    }
+
+    .cert-title {
+        font-size: 0.9rem;
+        min-height: 0;
+        padding: 0;
+        margin: 0 0 10px 0;
+        justify-content: flex-start;
+    }
+
+    .cert-btn {
+        padding: 5px 12px;
+        font-size: 0.8rem;
+        margin-top: 0;
+    }
+}
+

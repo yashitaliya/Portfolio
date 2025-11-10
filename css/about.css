@@ -1,0 +1,134 @@
+/* About Section Styles */
+
+.about {
+    background: var(--bg-secondary);
+    margin: 0;
+    padding: 100px 5%;
+    width: 100%;
+    border-radius: 0;
+    transition: background-color 0.3s ease;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-image {
+    position: relative;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: var(--transition);
+}
+
+.about-image img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 217, 255, 0.3);
+}
+
+.about-text h3 {
+    font-size: 2.5rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-primary);
+    margin-bottom: 25px;
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.9;
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+.about-info {
+    margin: 40px 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 15px;
+    background: var(--bg-primary);
+    border-radius: 10px;
+    border-left: 3px solid var(--accent-primary);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--accent-primary);
+    transition: var(--transition);
+}
+
+.info-item:hover {
+    background: var(--bg-tertiary);
+    transform: translateX(5px);
+    border-color: var(--accent-primary);
+}
+
+.info-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-value {
+    font-size: 16px;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.about-text .btn {
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .about {
+        padding: 70px 4%;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-image {
+        order: -1;
+    }
+
+    .about-text h3 {
+        font-size: 28px;
+    }
+
+    .about-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .about {
+        padding: 60px 4%;
+    }
+
+    .about-text h3 {
+        font-size: 24px;
+    }
+
+    .about-info {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
