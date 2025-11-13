@@ -121,6 +121,21 @@
     box-shadow: 0 6px 20px rgba(0, 217, 255, 0.3);
 }
 
+/* Typing Effect Cursor */
+.typing-effect::after {
+    content: '|';
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 968px) {
     .hero {
