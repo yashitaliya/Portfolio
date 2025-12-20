@@ -1,0 +1,154 @@
+/* Education Section Styles */
+
+.education {
+    background: var(--bg-secondary);
+    margin: 0;
+    padding: 100px 5%;
+    width: 100%;
+    border-radius: 0;
+    transition: background-color 0.3s ease;
+}
+
+.education .section-header {
+    margin-bottom: 70px;
+}
+
+.education-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.education-item {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+    background: var(--bg-primary);
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.education-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
+    background: var(--bg-tertiary);
+}
+
+.education-image {
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.education-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.education-item:hover .education-image {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.education-details h3 {
+    font-size: 1.6rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.education-institution {
+    font-size: 1.1rem;
+    color: var(--accent-primary);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.education-status,
+.education-grade,
+.education-year {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .education {
+        padding: 70px 4%;
+    }
+
+    .education-content {
+        gap: 30px;
+    }
+
+    .education-item {
+        padding: 30px;
+        gap: 30px;
+    }
+
+    .education-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .education-details h3 {
+        font-size: 1.4rem;
+    }
+
+    .education-institution {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .education {
+        padding: 60px 4%;
+    }
+
+    .education-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+        padding: 25px;
+    }
+
+    .education-image {
+        align-self: center;
+        width: 100px;
+        height: 70px;
+    }
+
+    .education-details h3 {
+        font-size: 1.3rem;
+    }
+
+    .education-institution {
+        font-size: 0.95rem;
+    }
+
+    .education-status,
+    .education-grade {
+        font-size: 0.9rem;
+    }
+}
