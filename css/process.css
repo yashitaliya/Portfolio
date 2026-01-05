@@ -1,0 +1,202 @@
+/* Process Section Styles - Alternating Timeline */
+
+.process {
+    background: transparent;
+    position: relative;
+    padding: 80px 6%;
+}
+
+.process .section-header {
+    margin-bottom: 80px;
+}
+
+.process-layout {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Vertical Connecting Line */
+.process-layout::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, transparent 0%, var(--accent-primary) 10%, var(--accent-primary) 90%, transparent 100%);
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* Remove previous sticky section */
+.process-sticky {
+    display: none;
+}
+
+.process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Cards alternate left and right */
+.process-card {
+    background: linear-gradient(135deg, var(--glass-1) 0%, var(--glass-2) 100%);
+    border: 1px solid var(--card-border, rgba(255, 255, 255, 0.08));
+    border-radius: 20px;
+    padding: 35px;
+    position: relative;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s ease;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    width: 45%;
+}
+
+/* Alternating positioning */
+.process-card:nth-child(odd) {
+    margin-right: auto;
+    margin-left: 0;
+    text-align: right;
+}
+
+.process-card:nth-child(even) {
+    margin-left: auto;
+    margin-right: 0;
+    text-align: left;
+}
+
+/* Dot on the line */
+.process-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 15px var(--accent-glow);
+    z-index: 10;
+}
+
+.process-card:nth-child(odd)::before {
+    right: -8%;
+    left: auto;
+}
+
+.process-card:nth-child(even)::before {
+    left: -8%;
+    right: auto;
+}
+
+/* Connector line from card to dot */
+.process-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    height: 2px;
+    width: 5%;
+    background: var(--accent-primary);
+    transform: translateY(-50%);
+}
+
+.process-card:nth-child(odd)::after {
+    right: 0;
+    left: auto;
+}
+
+.process-card:nth-child(even)::after {
+    left: 0;
+    right: auto;
+}
+
+.process-card:hover {
+    border-color: var(--accent-primary);
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px var(--accent-glow);
+}
+
+.process-number {
+    font-size: 4rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.04);
+    position: absolute;
+    top: -15px;
+    line-height: 1;
+    font-family: 'Inter', sans-serif;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.process-card:nth-child(odd) .process-number {
+    left: 20px;
+}
+
+.process-card:nth-child(even) .process-number {
+    right: 20px;
+}
+
+.process-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(14, 165, 233, 0.05) 100%);
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-primary) !important;
+    font-size: 1.5rem;
+    border: 1px solid rgba(14, 165, 233, 0.25);
+    margin-bottom: 15px;
+}
+
+.process-icon i {
+    color: var(--accent-primary) !important;
+}
+
+.process-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.process-content p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .process-layout::before {
+        left: 20px;
+    }
+
+    .process-card {
+        width: calc(100% - 50px);
+        margin-left: 50px !important;
+        margin-right: 0 !important;
+        text-align: left !important;
+    }
+
+    .process-card::before {
+        left: -40px !important;
+        right: auto !important;
+    }
+
+    .process-card::after {
+        left: -30px !important;
+        right: auto !important;
+        width: 25px !important;
+    }
+
+    .process-card:nth-child(odd) .process-number,
+    .process-card:nth-child(even) .process-number {
+        left: auto;
+        right: 15px;
+    }
+}

@@ -1,25 +1,44 @@
-/* Header Styles - Minimalist Design */
+/* Header Styles - Floating Glass Pill */
 
 .header {
-    padding: 30px 5%;
-    background: rgba(248, 249, 250, 0.95);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    padding: 14px 6%;
+    background: linear-gradient(135deg, var(--glass-1) 0%, var(--glass-2) 100%);
+    /* Matching global background #05050a */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 1400px;
+    border-radius: 18px;
     z-index: 1000;
-    transition: var(--transition);
+    transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.4s ease;
+    animation: headerSlideDown 0.6s ease-out;
 }
 
-[data-theme="dark"] .header {
-    background: rgba(26, 26, 26, 0.95);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+@keyframes headerSlideDown {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
 }
 
-
+[data-theme="light"] .header {
+    background: linear-gradient(135deg, var(--glass-1) 0%, var(--glass-2) 100%);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 30px -10px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
 
 .header-content {
     max-width: 1400px;
@@ -30,11 +49,47 @@
     gap: 30px;
 }
 
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-left: auto;
+}
+
+/* Logo Styles */
+.header-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+    margin-right: auto;
+}
+
+.header-logo img {
+    height: 55px;
+    width: auto;
+    transition: var(--transition);
+}
+
+.header-logo:hover img {
+    transform: scale(1.05);
+}
+
+/* Dark theme - logo should be light */
+.header-logo img {
+    filter: brightness(0) invert(1);
+}
+
+/* Light theme - logo should be dark */
+[data-theme="light"] .header-logo img {
+    filter: brightness(0);
+}
+
 .header-email {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 0.95rem;
+    font-size: 0.8125rem;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     min-width: 0;
@@ -42,13 +97,13 @@
 }
 
 .header-email i {
-    font-size: 1rem;
-    color: var(--text-secondary);
+    font-size: 0.875rem;
+    color: var(--accent-gold);
     flex-shrink: 0;
 }
 
 .header-email a {
-    color: var(--text-primary);
+    color: var(--text-secondary);
     display: block;
     white-space: nowrap;
     overflow: hidden;
@@ -58,47 +113,64 @@
 }
 
 .header-email a:hover {
-    color: var(--accent-primary);
+    color: var(--accent-gold);
 }
 
 .header-nav {
     display: flex;
-    gap: 40px;
+    gap: 36px;
     align-items: center;
 }
 
+.header-nav {
+    display: flex;
+    gap: 30px;
+    position: relative;
+    /* Context for marker */
+}
+
+/* Sliding active indicator */
+.nav-marker {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 3px;
+    background: var(--accent-gradient);
+    border-radius: 3px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px var(--accent-glow);
+    width: 0;
+    /* JS sets this */
+    pointer-events: none;
+    z-index: 10;
+}
+
 .nav-link {
-    color: var(--text-primary);
+    color: var(--text-secondary);
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.8125rem;
     font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 500;
+    transition: var(--transition);
     position: relative;
     padding: 5px 0;
-    letter-spacing: 0;
-    transform: translateY(0);
+    letter-spacing: 0.02em;
+}
+
+/* Remove old underline */
+.nav-link::after {
+    display: none;
 }
 
 .nav-link:hover,
 .nav-link.active {
     color: var(--accent-primary);
-    transform: translateY(-2px);
-}
-
-.nav-link.active {
-    background: var(--accent-primary);
-    color: white !important;
-    padding: 8px 12px;
-    border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
-    transform: translateY(-2px) scale(1.05);
 }
 
 .theme-toggle {
     background: transparent;
     border: 1px solid var(--border-color);
-    border-radius: 50%;
+    border-radius: 8px;
     width: 40px;
     height: 40px;
     display: flex;
@@ -106,15 +178,14 @@
     justify-content: center;
     cursor: pointer;
     transition: var(--transition);
-    color: var(--text-primary);
-    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
 }
 
 .theme-toggle:hover {
-    background: var(--bg-tertiary);
     border-color: var(--accent-primary);
     color: var(--accent-primary);
-    transform: rotate(15deg);
+    box-shadow: 0 0 12px var(--accent-glow);
 }
 
 .mobile-menu-toggle {
@@ -135,7 +206,13 @@
 /* Mobile Navigation */
 @media (max-width: 968px) {
     .header {
-        padding: 20px 4%;
+        padding: 16px 5%;
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 100%;
+        border-radius: 0;
+        border-width: 0 0 1px 0;
     }
 
     .header-content {
@@ -146,16 +223,8 @@
         width: 100%;
     }
 
-    .header-email {
-        font-size: 0.9rem;
-    }
-
-    .header-email a {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 230px;
-        display: block;
+    .header-logo img {
+        height: 32px;
     }
 
     .mobile-menu-toggle {
@@ -172,19 +241,27 @@
         display: none;
         width: 100%;
         flex-direction: column;
-        gap: 20px;
-        margin-top: 20px;
-        padding-top: 20px;
-        border-top: 1px solid var(--border-color);
+        gap: 0;
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
         order: 3;
         position: absolute;
         top: 100%;
         left: 0;
         right: 0;
         background: var(--bg-primary);
-        padding: 20px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        order: 3;
+        padding: 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .header-nav .nav-link {
+        padding: 16px 5%;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .header-nav .nav-link:last-child {
+        border-bottom: none;
     }
 
     .header-nav.active {
@@ -195,50 +272,54 @@
 /* Mobile Portrait */
 @media (max-width: 640px) {
     .header {
-        padding: 15px 4%;
+        padding: 16px 5%;
     }
 
     .header-email {
-        font-size: 0.8rem;
+        font-size: 0.6875rem;
     }
 
     .header-email a {
-        max-width: 180px;
+        max-width: 160px;
     }
 
     .header-email i {
-        font-size: 0.9rem;
+        font-size: 0.75rem;
         flex-shrink: 0;
     }
 
     .header-nav {
-        gap: 15px;
+        gap: 0;
+    }
+
+    .theme-toggle {
+        width: 36px;
+        height: 36px;
+        font-size: 0.875rem;
     }
 }
 
 /* Ensure the main content is pushed below the fixed header. We set a CSS variable
    `--header-height` from JS so the layout adapts to header size (and responsive changes). */
 .main-content {
-    padding-top: var(--header-height, 100px);
-    transition: padding-top 0.2s ease;
+    padding-top: var(--header-height, 90px);
+    transition: padding-top 0.3s ease;
 }
 
-/* Compact header when user scrolls: reduces padding and slightly increases shadow */
+/* Compact header when user scrolls */
 .header.scrolled {
-    padding: 10px 5%;
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.18);
-    background: rgba(248, 249, 250, 0.96);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    transition: padding 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    padding: 16px 6%;
+    border-bottom-color: transparent;
+    box-shadow: 0 1px 0 var(--border-color);
 }
 
+/* Maintain glass effect in dark mode scrolled state */
+/* Maintain glass effect in dark mode scrolled state */
 [data-theme="dark"] .header.scrolled {
-    background: rgba(26, 26, 26, 0.96);
+    background: linear-gradient(135deg, var(--glass-1) 0%, var(--glass-2) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* Reflection border */
+    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.6);
 }
-
-/* Small tweak so focusable elements inside header don't shift layout when header changes */
-.header.scrolled .nav-link {
-    transform: translateY(0);
-}
-

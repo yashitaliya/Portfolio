@@ -1,13 +1,13 @@
 // Navigation JavaScript - Smooth scrolling and active section highlighting
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Smooth scroll for navigation links
     const navLinks = document.querySelectorAll('a[href^="#"]');
-    
+
     navLinks.forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            
+
             // Skip if it's just "#"
             if (href === '#') {
                 e.preventDefault();
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
-                
+
                 // Calculate offset for fixed header
                 const headerHeight = document.querySelector('.header').offsetHeight;
                 const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
@@ -48,9 +48,29 @@ document.addEventListener('DOMContentLoaded', function() {
     setHeaderHeight();
     window.addEventListener('resize', setHeaderHeight);
 
+    // Sliding Marker Logic
+    const marker = document.querySelector('.nav-marker');
+    const nav = document.querySelector('.header-nav');
+
+    function moveMarker(element) {
+        if (marker && element && nav) {
+            // Calculate relative position to nav container
+            const navRect = nav.getBoundingClientRect();
+            const linkRect = element.getBoundingClientRect();
+            const left = linkRect.left - navRect.left;
+
+            marker.style.width = `${linkRect.width}px`;
+            marker.style.transform = `translateX(${left}px)`;
+        } else if (marker) {
+            marker.style.width = '0';
+        }
+    }
+
     function highlightActiveSection() {
         const scrollY = window.pageYOffset;
         const headerHeight = document.querySelector('.header').offsetHeight;
+
+        let foundActive = false;
 
         sections.forEach(section => {
             const sectionHeight = section.offsetHeight;
@@ -63,9 +83,35 @@ document.addEventListener('DOMContentLoaded', function() {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === `#${sectionId}`) {
                         link.classList.add('active');
+                        moveMarker(link); // Move marker to active
+                        foundActive = true;
                     }
                 });
             }
+        });
+
+        // If at top or no section active, reset or highlight home
+        if (!foundActive && scrollY < 100) {
+            const homeLink = document.querySelector('a[href="#home"]');
+            if (homeLink) {
+                homeLink.classList.add('active');
+                moveMarker(homeLink);
+            }
+        }
+    }
+
+    // Hover effect for marker
+    navLinksArray.forEach(link => {
+        link.addEventListener('mouseenter', (e) => {
+            moveMarker(e.target);
+        });
+    });
+
+    // Reset to active on mouse leave
+    if (nav) {
+        nav.addEventListener('mouseleave', () => {
+            const activeLink = document.querySelector('.nav-link.active');
+            moveMarker(activeLink);
         });
     }
 
@@ -79,13 +125,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Header background on scroll - removed since header is always visible now
-
     // Throttle scroll event for better performance
     let ticking = false;
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         if (!ticking) {
-            window.requestAnimationFrame(function() {
+            window.requestAnimationFrame(function () {
                 highlightActiveSection();
                 updateHeaderOnScroll();
                 ticking = false;
@@ -94,9 +138,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Update on resize
+    window.addEventListener('resize', () => {
+        setHeaderHeight();
+        const activeLink = document.querySelector('.nav-link.active');
+        moveMarker(activeLink);
+    });
+
     // Highlight active section on page load
-    highlightActiveSection();
-    // Ensure header scrolled state is correct on load
-    updateHeaderOnScroll();
+    // Small delay to ensure layout is ready
+    setTimeout(() => {
+        highlightActiveSection();
+        updateHeaderOnScroll();
+    }, 100);
 });
 

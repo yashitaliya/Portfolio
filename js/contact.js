@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const contactForm = document.getElementById('contactForm');
     const submitButton = contactForm.querySelector('button[type="submit"]');
     const formInputs = contactForm.querySelectorAll('.form-input');
@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
     statusMessage.className = 'form-status';
     contactForm.appendChild(statusMessage);
 
-    contactForm.addEventListener('submit', async function(e) {
+    contactForm.addEventListener('submit', async function (e) {
         e.preventDefault();
-        
+
         // Disable submit button and show loading state
         submitButton.disabled = true;
         submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        
+
         // Get form data
         const formData = {
             name: contactForm.querySelector('input[name="name"]').value,
@@ -35,10 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // Show success message
             statusMessage.className = 'form-status success';
             statusMessage.textContent = 'Message sent successfully!';
-            
+
             // Reset form
             contactForm.reset();
-            
+
         } catch (error) {
             console.error('Error:', error);
             // Show error message
@@ -57,13 +57,49 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     });
 
-    // Add validation styles on input
+    // Real-time validation
+    const validators = {
+        name: (value) => value.trim().length >= 2,
+        email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+        subject: (value) => value.trim().length >= 4,
+        message: (value) => value.trim().length >= 10
+    };
+
     formInputs.forEach(input => {
-        input.addEventListener('input', function() {
-            if (this.value.trim() !== '') {
-                this.classList.add('has-content');
-            } else {
-                this.classList.remove('has-content');
+        const fieldName = input.name;
+
+        input.addEventListener('input', function () {
+            const value = this.value;
+
+            // Remove both classes first
+            this.classList.remove('valid', 'invalid');
+
+            if (value.trim() === '') {
+                // Empty - no validation state
+                return;
+            }
+
+            // Validate based on field type
+            if (validators[fieldName]) {
+                if (validators[fieldName](value)) {
+                    this.classList.add('valid');
+                } else {
+                    this.classList.add('invalid');
+                }
+            }
+        });
+
+        // Validate on blur for better UX
+        input.addEventListener('blur', function () {
+            const value = this.value;
+            this.classList.remove('valid', 'invalid');
+
+            if (value.trim() !== '' && validators[fieldName]) {
+                if (validators[fieldName](value)) {
+                    this.classList.add('valid');
+                } else {
+                    this.classList.add('invalid');
+                }
             }
         });
     });
