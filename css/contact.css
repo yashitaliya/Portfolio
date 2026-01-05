@@ -159,8 +159,16 @@
 }
 
 [data-theme="light"] .contact-form-wrapper {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--card-border);
+    background: linear-gradient(135deg, var(--glass-1) 0%, var(--glass-2) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+[data-theme="light"] .form-input {
+    background: rgba(255, 255, 255, 0.15);
+    /* Cleaner glass for inputs in light mode */
+    border-color: rgba(0, 0, 0, 0.15);
 }
 
 .form-title {
