@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Certificate Modal Test</title>
+    <style>
+        body { 
+            background: #1a1a1a; 
+            color: white; 
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+        .test-btn {
+            padding: 15px 30px;
+            background: #0ea5e9;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 16px;
+        }
+        .test-btn:hover {
+            background: #0284c7;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            background: #2a2a2a;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Certificate Modal Test</h1>
+    <p>Click buttons to test if certificates open in modal:</p>
+    
+    <a class="cert-btn test-btn" href="certificates/CSS.pdf" data-cert-title="CSS">Test CSS Certificate</a>
+    <a class="cert-btn test-btn" href="certificates/JAVA.pdf" data-cert-title="JAVA">Test JAVA Certificate</a>
+    
+    <div class="status" id="status">
+        <strong>Status:</strong> Waiting for click...
+    </div>
+
+    <!-- Include the modal HTML -->
+    <div id="pdfModal" class="pdf-modal" style="display: none;">
+        <div class="pdf-modal-overlay"></div>
+        <div class="pdf-modal-window" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: #2a2a2a; border-radius: 20px; z-index: 10000;">
+            <div class="pdf-modal-header" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #1a1a1a; border-radius: 20px 20px 0 0;">
+                <div class="pdf-modal-title" style="color: white; font-weight: 600;">
+                    <span id="pdfModalTitle">Certificate</span>
+                </div>
+                <button class="pdf-modal-close" style="background: #ff5f5f; border: none; color: white; padding: 8px 16px; border-radius: 6px; cursor: pointer;">Close</button>
+            </div>
+            <div class="pdf-modal-body" style="height: calc(100% - 60px);">
+                <iframe id="pdfViewer" style="width: 100%; height: 100%; border: none;"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Test Script -->
+    <script>
+        const pdfModal = document.getElementById('pdfModal');
+        const pdfViewer = document.getElementById('pdfViewer');
+        const pdfModalTitle = document.getElementById('pdfModalTitle');
+        const pdfModalClose = document.querySelector('.pdf-modal-close');
+        const pdfModalOverlay = document.querySelector('.pdf-modal-overlay');
+        const statusDiv = document.getElementById('status');
+
+        // Certificate buttons
+        const certButtons = document.querySelectorAll('.cert-btn');
+
+        // Open PDF Modal
+        certButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pdfUrl = btn.getAttribute('href');
+                let title = btn.getAttribute('data-cert-title') || 'Certificate';
+                
+                statusDiv.innerHTML = `<strong>Status:</strong> Opening modal for "${title}"...`;
+                
+                pdfModalTitle.textContent = title;
+                pdfModal.style.display = 'block';
+                pdfViewer.src = pdfUrl;
+                
+                setTimeout(() => {
+                    statusDiv.innerHTML = `<strong>Status:</strong> ✅ Modal opened successfully! PDF: ${pdfUrl}`;
+                }, 500);
+            });
+        });
+
+        // Close Modal
+        const closeModal = () => {
+            pdfModal.style.display = 'none';
+            pdfViewer.src = '';
+            statusDiv.innerHTML = `<strong>Status:</strong> Modal closed. Ready for next test.`;
+        };
+
+        pdfModalClose.addEventListener('click', closeModal);
+        pdfModalOverlay.addEventListener('click', closeModal);
+
+        // ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && pdfModal.style.display === 'block') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -37,6 +37,9 @@
   <link rel="stylesheet" href="css/portfolio.css" />
   <link rel="stylesheet" href="css/contact.css" />
   <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/certificate-modal.css" />
+  <link rel="stylesheet" href="css/enhancements.css" />
+  <link rel="stylesheet" href="css/cursor.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -46,6 +49,9 @@
 </head>
 
 <body>
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+
   <!-- Global Ambient Background -->
   <div class="global-background"></div>
 
@@ -217,6 +223,7 @@
               <h3>Bachelor of Computer Application</h3>
               <p class="education-institution">SDJ International College</p>
               <p class="education-status">July 2023 - July 2026</p>
+              <p class="education-grade">CGPA: 8.02</p>
             </div>
           </div>
           <div class="education-item">
@@ -459,7 +466,7 @@
                 <div class="cert-thumb"><i class="fas fa-file-pdf"></i></div>
                 <h4 class="cert-title">Android App with Python</h4>
               </div>
-              <a class="cert-btn" href="certificates/Android App with Python.pdf" target="_blank" rel="noopener">View
+              <a class="cert-btn" href="certificates/Android App with Python.pdf" data-cert-title="Android App with Python">View
                 Certificate</a>
             </div>
             <div class="certificate-card">
@@ -467,30 +474,28 @@
                 <div class="cert-thumb"><i class="fas fa-file-pdf"></i></div>
                 <h4 class="cert-title">Artificial Intelligence Fundamentals</h4>
               </div>
-              <a class="cert-btn" href="certificates/ArtificialIntelligenceFundamentals.pdf" target="_blank"
-                rel="noopener">View Certificate</a>
+              <a class="cert-btn" href="certificates/ArtificialIntelligenceFundamentals.pdf" data-cert-title="Artificial Intelligence Fundamentals">View Certificate</a>
             </div>
             <div class="certificate-card">
               <div class="cert-header">
                 <div class="cert-thumb"><i class="fas fa-file-pdf"></i></div>
                 <h4 class="cert-title">Cryptography And Secure Communication</h4>
               </div>
-              <a class="cert-btn" href="certificates/Cryptography And Secure Communication.pdf" target="_blank"
-                rel="noopener">View Certificate</a>
+              <a class="cert-btn" href="certificates/Cryptography And Secure Communication.pdf" data-cert-title="Cryptography And Secure Communication">View Certificate</a>
             </div>
             <div class="certificate-card">
               <div class="cert-header">
                 <div class="cert-thumb"><i class="fas fa-file-pdf"></i></div>
                 <h4 class="cert-title">CSS</h4>
               </div>
-              <a class="cert-btn" href="certificates/CSS.pdf" target="_blank" rel="noopener">View Certificate</a>
+              <a class="cert-btn" href="certificates/CSS.pdf" data-cert-title="CSS">View Certificate</a>
             </div>
             <div class="certificate-card">
               <div class="cert-header">
                 <div class="cert-thumb"><i class="fas fa-file-pdf"></i></div>
                 <h4 class="cert-title">Dart Programming</h4>
               </div>
-              <a class="cert-btn" href="certificates/Dart Programming.pdf" target="_blank" rel="noopener">View
+              <a class="cert-btn" href="certificates/Dart Programming.pdf" data-cert-title="Dart Programming">View
                 Certificate</a>
             </div>
             <div class="certificate-card">
@@ -500,22 +505,21 @@
                   Distributed Version Control Using Git
                 </h4>
               </div>
-              <a class="cert-btn" href="certificates/Distributed Version Control Using Git.pdf" target="_blank"
-                rel="noopener">View Certificate</a>
+              <a class="cert-btn" href="certificates/Distributed Version Control Using Git.pdf" data-cert-title="Distributed Version Control Using Git">View Certificate</a>
             </div>
             <div class="certificate-card">
               <div class="cert-header">
                 <div class="cert-thumb"><i class="fas fa-file-pdf"></i></div>
                 <h4 class="cert-title">HTML</h4>
               </div>
-              <a class="cert-btn" href="certificates/HTML.pdf" target="_blank" rel="noopener">View Certificate</a>
+              <a class="cert-btn" href="certificates/HTML.pdf" data-cert-title="HTML">View Certificate</a>
             </div>
             <div class="certificate-card">
               <div class="cert-header">
                 <div class="cert-thumb"><i class="fas fa-file-pdf"></i></div>
                 <h4 class="cert-title">Introduction to C</h4>
               </div>
-              <a class="cert-btn" href="certificates/Introduction to C.pdf" target="_blank" rel="noopener">View
+              <a class="cert-btn" href="certificates/Introduction to C.pdf" data-cert-title="Introduction to C">View
                 Certificate</a>
             </div>
             <div class="certificate-card">
@@ -523,7 +527,7 @@
                 <div class="cert-thumb"><i class="fas fa-file-pdf"></i></div>
                 <h4 class="cert-title">Introduction to python</h4>
               </div>
-              <a class="cert-btn" href="certificates/Introduction to python.pdf" target="_blank" rel="noopener">View
+              <a class="cert-btn" href="certificates/Introduction to python.pdf" data-cert-title="Introduction to python">View
                 Certificate</a>
             </div>
             <div class="certificate-card">
@@ -531,14 +535,14 @@
                 <div class="cert-thumb"><i class="fas fa-file-pdf"></i></div>
                 <h4 class="cert-title">JAVA</h4>
               </div>
-              <a class="cert-btn" href="certificates/JAVA.pdf" target="_blank" rel="noopener">View Certificate</a>
+              <a class="cert-btn" href="certificates/JAVA.pdf" data-cert-title="JAVA">View Certificate</a>
             </div>
             <div class="certificate-card">
               <div class="cert-header">
                 <div class="cert-thumb"><i class="fas fa-file-pdf"></i></div>
                 <h4 class="cert-title">Learn Bootstrap</h4>
               </div>
-              <a class="cert-btn" href="certificates/Learn Bootstrap.pdf" target="_blank" rel="noopener">View
+              <a class="cert-btn" href="certificates/Learn Bootstrap.pdf" data-cert-title="Learn Bootstrap">View
                 Certificate</a>
             </div>
             <div class="certificate-card">
@@ -548,23 +552,21 @@
                   Mobile App Development using Flutter
                 </h4>
               </div>
-              <a class="cert-btn" href="certificates/Mobile App Development using Flutter.pdf" target="_blank"
-                rel="noopener">View Certificate</a>
+              <a class="cert-btn" href="certificates/Mobile App Development using Flutter.pdf" data-cert-title="Mobile App Development using Flutter">View Certificate</a>
             </div>
             <div class="certificate-card">
               <div class="cert-header">
                 <div class="cert-thumb"><i class="fas fa-file-pdf"></i></div>
                 <h4 class="cert-title">Mobile Development and JavaScript</h4>
               </div>
-              <a class="cert-btn" href="certificates/Mobile Development and JavaScript.pdf" target="_blank"
-                rel="noopener">View Certificate</a>
+              <a class="cert-btn" href="certificates/Mobile Development and JavaScript.pdf" data-cert-title="Mobile Development and JavaScript">View Certificate</a>
             </div>
             <div class="certificate-card">
               <div class="cert-header">
                 <div class="cert-thumb"><i class="fas fa-file-pdf"></i></div>
                 <h4 class="cert-title">Visual Graphics in C</h4>
               </div>
-              <a class="cert-btn" href="certificates/Visual Graphics in C.pdf" target="_blank" rel="noopener">View
+              <a class="cert-btn" href="certificates/Visual Graphics in C.pdf" data-cert-title="Visual Graphics in C">View
                 Certificate</a>
             </div>
             <div class="certificate-card">
@@ -572,7 +574,7 @@
                 <div class="cert-thumb"><i class="fas fa-file-pdf"></i></div>
                 <h4 class="cert-title">PHP Tutorial</h4>
               </div>
-              <a class="cert-btn" href="certificates/PHP Tutorial.pdf" target="_blank" rel="noopener">View
+              <a class="cert-btn" href="certificates/PHP Tutorial.pdf" data-cert-title="PHP Tutorial">View
                 Certificate</a>
             </div>
             <div class="certificate-card">
@@ -580,7 +582,23 @@
                 <div class="cert-thumb"><i class="fas fa-file-pdf"></i></div>
                 <h4 class="cert-title">Generative AI Mastermind</h4>
               </div>
-              <a class="cert-btn" href="certificates/Generative AI Mastermind.pdf" target="_blank" rel="noopener">View
+              <a class="cert-btn" href="certificates/Generative AI Mastermind.pdf" data-cert-title="Generative AI Mastermind">View
+                Certificate</a>
+            </div>
+            <div class="certificate-card">
+              <div class="cert-header">
+                <div class="cert-thumb"><i class="fas fa-file-pdf"></i></div>
+                <h4 class="cert-title">Hack2skill Certificate</h4>
+              </div>
+              <a class="cert-btn" href="certificates/Hack2skill-Certificate.pdf" data-cert-title="Hack2skill Certificate">View
+                Certificate</a>
+            </div>
+            <div class="certificate-card">
+              <div class="cert-header">
+                <div class="cert-thumb"><i class="fas fa-file-pdf"></i></div>
+                <h4 class="cert-title">Prompt Engineering with ChatGPT</h4>
+              </div>
+              <a class="cert-btn" href="certificates/Prompt Engineering with ChatGPT.pdf" data-cert-title="Prompt Engineering with ChatGPT">View
                 Certificate</a>
             </div>
           </div>
@@ -605,36 +623,175 @@
         </div>
         <div class="portfolio-grid">
           <div class="portfolio-item" data-category="web">
-            <div class="portfolio-image">
-              <img src="wordwave_logo.png" alt="Portfolio Item" />
-              <div class="portfolio-overlay">
-                <h3>WordWave</h3>
-                <p>Modern and responsive web</p>
-                <a href="https://github.com/yashitaliya/WordWave/tree/main/WordWave-Web" class="portfolio-link"><i
-                    class="fas fa-external-link-alt"></i></a>
+            <div class="portfolio-card">
+              <div class="portfolio-image">
+                <img src="wordwave_logo.png" alt="WordWave App" />
               </div>
-            </div>
-          </div>
-          <div class="portfolio-item" data-category="mobile">
-            <div class="portfolio-image">
-              <img src="ChatBuddy.png" alt="Portfolio Item" />
-              <div class="portfolio-overlay">
-                <h3>ChatBuddy</h3>
-                <p>Mobile application</p>
-                <a href="https://github.com/yashitaliya/ChatBuddy" class="portfolio-link"><i
-                    class="fas fa-external-link-alt"></i></a>
+              <div class="portfolio-content">
+                <div class="portfolio-category">
+                  <i class="fas fa-globe"></i> Web Application
+                </div>
+                <h3 class="portfolio-title">WordWave</h3>
+                <p class="portfolio-description">A modern blogging platform with real-time collaboration, rich text editing, and responsive design.</p>
+                <div class="portfolio-tech">
+                  <span class="tech-badge">React</span>
+                  <span class="tech-badge">Node.js</span>
+                  <span class="tech-badge">MongoDB</span>
+                </div>
+                <div class="portfolio-actions">
+                  <a href="https://github.com/yashitaliya/WordWave/tree/main/WordWave-Web" target="_blank" class="portfolio-btn btn-code">
+                    <i class="fab fa-github"></i> View Code
+                  </a>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="portfolio-item" data-category="mobile">
-            <div class="portfolio-image">
-              <img src="todo.png" alt="Portfolio Item" />
-              <div class="portfolio-overlay">
-                <h3>TODO App</h3>
-                <p>Cross-platform mobile application</p>
-                <a href="https://github.com/yashitaliya/TODO_App" class="portfolio-link"><i
-                    class="fas fa-external-link-alt"></i></a>
+            <div class="portfolio-card">
+              <div class="portfolio-image">
+                <img src="ChatBuddy.png" alt="ChatBuddy App" />
+              </div>
+              <div class="portfolio-content">
+                <div class="portfolio-category">
+                  <i class="fas fa-mobile-alt"></i> Mobile Application
+                </div>
+                <h3 class="portfolio-title">ChatBuddy</h3>
+                <p class="portfolio-description">Real-time messaging app with Firebase backend, featuring group chats, media sharing, and push notifications.</p>
+                <div class="portfolio-tech">
+                  <span class="tech-badge">Flutter</span>
+                  <span class="tech-badge">Firebase</span>
+                  <span class="tech-badge">Dart</span>
+                </div>
+                <div class="portfolio-actions">
+                  <a href="https://github.com/yashitaliya/ChatBuddy" target="_blank" class="portfolio-btn btn-code">
+                    <i class="fab fa-github"></i> View Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-item" data-category="mobile">
+            <div class="portfolio-card">
+              <div class="portfolio-image">
+                <img src="todo.png" alt="TODO App" />
+              </div>
+              <div class="portfolio-content">
+                <div class="portfolio-category">
+                  <i class="fas fa-mobile-alt"></i> Mobile Application
+                </div>
+                <h3 class="portfolio-title">TODO App</h3>
+                <p class="portfolio-description">Cross-platform task management application with local storage, reminders, and beautiful UI animations.</p>
+                <div class="portfolio-tech">
+                  <span class="tech-badge">Flutter</span>
+                  <span class="tech-badge">SQLite</span>
+                  <span class="tech-badge">Dart</span>
+                </div>
+                <div class="portfolio-actions">
+                  <a href="https://github.com/yashitaliya/TODO_App" target="_blank" class="portfolio-btn btn-code">
+                    <i class="fab fa-github"></i> View Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-item" data-category="mobile">
+            <div class="portfolio-card">
+              <div class="portfolio-image">
+                <img src="quickseat_logo.png" alt="QuickSeat App" />
+              </div>
+              <div class="portfolio-content">
+                <div class="portfolio-category">
+                  <i class="fas fa-mobile-alt"></i> Mobile Application
+                </div>
+                <h3 class="portfolio-title">QuickSeat</h3>
+                <p class="portfolio-description">A full-stack event ticketing platform with interactive seat selection, QR-based check-in, and real-time analytics.</p>
+                <div class="portfolio-tech">
+                  <span class="tech-badge">Flutter</span>
+                  <span class="tech-badge">Dart</span>
+                  <span class="tech-badge">Firebase</span>
+                </div>
+                <div class="portfolio-actions">
+                  <a href="https://github.com/yashitaliya/quickseat" target="_blank" class="portfolio-btn btn-code">
+                    <i class="fab fa-github"></i> View Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-item" data-category="mobile">
+            <div class="portfolio-card">
+              <div class="portfolio-image">
+                <img src="vocalize_logo.png" alt="Vocalize App" />
+              </div>
+              <div class="portfolio-content">
+                <div class="portfolio-category">
+                  <i class="fas fa-mobile-alt"></i> Mobile Application
+                </div>
+                <h3 class="portfolio-title">Vocalize</h3>
+                <p class="portfolio-description">A language learning app with real-time video calls, flashcards, tests, and progress tracking using Agora and Firebase.</p>
+                <div class="portfolio-tech">
+                  <span class="tech-badge">Flutter</span>
+                  <span class="tech-badge">Firebase</span>
+                  <span class="tech-badge">Agora RTC</span>
+                </div>
+                <div class="portfolio-actions">
+                  <a href="https://github.com/yashitaliya/Vocalize" target="_blank" class="portfolio-btn btn-code">
+                    <i class="fab fa-github"></i> View Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-item" data-category="mobile">
+            <div class="portfolio-card">
+              <div class="portfolio-image">
+                <img src="relic_app_logo.png" alt="Relic App" />
+              </div>
+              <div class="portfolio-content">
+                <div class="portfolio-category">
+                  <i class="fas fa-mobile-alt"></i> Mobile Application
+                </div>
+                <h3 class="portfolio-title">Relic</h3>
+                <p class="portfolio-description">A modern Flutter gallery app focused on clean organization, privacy, and smooth user experience for photo management.</p>
+                <div class="portfolio-tech">
+                  <span class="tech-badge">Flutter</span>
+                  <span class="tech-badge">Dart</span>
+                </div>
+                <div class="portfolio-actions">
+                  <a href="https://github.com/yashitaliya/Relic" target="_blank" class="portfolio-btn btn-code">
+                    <i class="fab fa-github"></i> View Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-item" data-category="mobile">
+            <div class="portfolio-card">
+              <div class="portfolio-image">
+                <img src="safeseat_logo.png" alt="SafeSeat App" />
+              </div>
+              <div class="portfolio-content">
+                <div class="portfolio-category">
+                  <i class="fas fa-mobile-alt"></i> Mobile Application
+                </div>
+                <h3 class="portfolio-title">SafeSeat</h3>
+                <p class="portfolio-description">A smart library seat booking platform with real-time occupancy tracking, centralized booking, and analytics for administrators.</p>
+                <div class="portfolio-tech">
+                  <span class="tech-badge">Flutter</span>
+                  <span class="tech-badge">Firebase</span>
+                  <span class="tech-badge">Provider</span>
+                </div>
+                <div class="portfolio-actions">
+                  <a href="https://github.com/yashitaliya/safeseat" target="_blank" class="portfolio-btn btn-code">
+                    <i class="fab fa-github"></i> View Code
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -764,11 +921,39 @@
     </div>
   </footer>
 
+  <!-- PDF Preview Modal -->
+  <div id="pdfModal" class="pdf-modal">
+    <div class="pdf-modal-overlay"></div>
+    <div class="pdf-modal-window">
+      <div class="pdf-modal-header">
+        <div class="pdf-modal-title">
+          <i class="fas fa-file-pdf"></i>
+          <span id="pdfModalTitle">Certificate</span>
+        </div>
+        <button class="pdf-modal-close" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="pdf-modal-body">
+        <object id="pdfViewer" type="application/pdf" data="">
+          <embed id="pdfViewerEmbed" type="application/pdf" src="" />
+          <p style="color: white; text-align: center; padding: 20px;">
+            Your browser does not support PDF viewing. 
+            <a href="#" id="downloadPdfLink" style="color: #0ea5e9;">Download the PDF</a>
+          </p>
+        </object>
+      </div>
+    </div>
+  </div>
+
   <!-- JavaScript Files -->
+  <script src="js/cursor.js"></script>
   <script src="js/theme.js"></script>
   <script src="js/main.js"></script>
   <script src="js/navigation.js"></script>
   <script src="js/three-scene.js"></script>
+  <script src="js/certificates.js"></script>
+  <script src="js/enhancements.js"></script>
 
   <!-- Email.js for contact form -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>

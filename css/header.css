@@ -180,6 +180,8 @@
     transition: var(--transition);
     color: var(--text-secondary);
     font-size: 1rem;
+    z-index: 100;
+    flex-shrink: 0;
 }
 
 .theme-toggle:hover {

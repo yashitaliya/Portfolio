@@ -348,42 +348,11 @@ class ScrollAnimations {
         this.initParallax();
     }
 
-    // Hero entrance animation
+    // Hero entrance animation (handled by CSS for better performance)
     animateHero() {
-        const heroTimeline = gsap.timeline({
-            defaults: { ease: 'power3.out', duration: 0.8 }
-        });
-
-        heroTimeline
-            .fromTo('.profile-image-wrapper',
-                { opacity: 0, scale: 0.8, y: 30 },
-                { opacity: 1, scale: 1, y: 0, duration: 1 }
-            )
-            .fromTo('.hero-status-container',
-                { opacity: 0, y: 20 },
-                { opacity: 1, y: 0, duration: 0.6 },
-                '-=0.6'
-            )
-            .fromTo('.hero-greeting',
-                { opacity: 0, y: 40 },
-                { opacity: 1, y: 0, duration: 0.8 },
-                '-=0.4'
-            )
-            .fromTo('.hero-roles',
-                { opacity: 0, y: 30 },
-                { opacity: 1, y: 0, duration: 0.7 },
-                '-=0.4'
-            )
-            .fromTo('.hero-headline',
-                { opacity: 0, y: 30 },
-                { opacity: 1, y: 0, duration: 0.7 },
-                '-=0.3'
-            )
-            .fromTo('.hero-cta',
-                { opacity: 0, y: 20 },
-                { opacity: 1, y: 0, duration: 0.6 },
-                '-=0.2'
-            );
+        // Hero animations now handled by CSS keyframes for better initial load performance
+        // See hero.css for @keyframes fadeInUp, fadeInDown, scaleIn animations
+        return;
     }
 
     // Section headers animation

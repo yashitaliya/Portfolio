@@ -1,0 +1,125 @@
+/* Custom Cursor Styles */
+
+* {
+  cursor: none;
+}
+
+body {
+  cursor: none;
+}
+
+a, button, input[type="button"], input[type="submit"], .portfolio-btn, .nav-link, .filter-btn {
+  cursor: none;
+}
+
+/* Cursor Container */
+.cursor {
+  position: fixed;
+  width: 24px;
+  height: 24px;
+  border: 2.5px solid rgba(100, 200, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen;
+  transition: all 0.05s ease-out;
+  box-shadow: 0 0 10px rgba(100, 200, 255, 0.6), inset 0 0 10px rgba(100, 200, 255, 0.3);
+}
+
+.cursor::before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(100, 200, 255, 1), rgba(100, 200, 255, 0.5));
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 6px rgba(100, 200, 255, 0.8);
+}
+
+.cursor.active {
+  width: 32px;
+  height: 32px;
+  border-width: 3px;
+  border-color: rgba(100, 200, 255, 1);
+  box-shadow: 0 0 20px rgba(100, 200, 255, 0.9), inset 0 0 15px rgba(100, 200, 255, 0.5);
+  background: radial-gradient(circle, rgba(100, 200, 255, 0.1), transparent);
+}
+
+.cursor.click {
+  width: 36px;
+  height: 36px;
+  border-color: rgba(100, 200, 255, 1);
+  box-shadow: 0 0 25px rgba(100, 200, 255, 1), inset 0 0 20px rgba(100, 200, 255, 0.6), 0 0 40px rgba(100, 200, 255, 0.4);
+}
+
+/* Cursor Trail */
+.cursor-trail {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(100, 200, 255, 0.6), rgba(100, 200, 255, 0.2));
+  pointer-events: none;
+  z-index: 9998;
+  box-shadow: 0 0 4px rgba(100, 200, 255, 0.7);
+  animation: trailFade 0.6s ease-out forwards;
+}
+
+@keyframes trailFade {
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+/* Hover effect on interactive elements */
+a:hover ~ .cursor,
+button:hover ~ .cursor,
+.portfolio-btn:hover ~ .cursor,
+.nav-link:hover ~ .cursor,
+.filter-btn:hover ~ .cursor,
+input:hover ~ .cursor,
+textarea:hover ~ .cursor {
+  transform: scale(1.5);
+}
+
+/* Smooth transition for dark/light theme adjustments */
+[data-theme="light"] .cursor {
+  border-color: rgba(255, 100, 0, 0.95);
+  box-shadow: 0 0 20px rgba(255, 100, 0, 0.9), inset 0 0 12px rgba(255, 100, 0, 0.5);
+}
+
+[data-theme="light"] .cursor::before {
+  background: radial-gradient(circle, rgba(255, 100, 0, 1), rgba(255, 100, 0, 0.7));
+  box-shadow: 0 0 10px rgba(255, 100, 0, 1);
+}
+
+[data-theme="light"] .cursor.active {
+  border-color: rgba(255, 100, 0, 1);
+  box-shadow: 0 0 30px rgba(255, 100, 0, 1), inset 0 0 18px rgba(255, 100, 0, 0.6);
+  background: radial-gradient(circle, rgba(255, 100, 0, 0.2), transparent);
+}
+
+[data-theme="light"] .cursor.click {
+  box-shadow: 0 0 40px rgba(255, 100, 0, 1), inset 0 0 25px rgba(255, 100, 0, 0.7), 0 0 50px rgba(255, 100, 0, 0.6);
+}
+
+[data-theme="light"] .cursor-trail {
+  background: radial-gradient(circle, rgba(255, 100, 0, 0.8), rgba(255, 100, 0, 0.3));
+  box-shadow: 0 0 8px rgba(255, 100, 0, 0.9);
+}
+
+/* Mobile - disable custom cursor */
+@media (max-width: 768px) {
+  .cursor,
+  .cursor-trail {
+    display: none;
+  }
+  
+  * {
+    cursor: auto;
+  }
+}
